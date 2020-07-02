@@ -11,42 +11,93 @@ body {
 }
 
 nav {
-    width: 100vw;
-    margin: auto;
+    height: 100px;
     background-color: #28293D;
     opacity: 0.9;
-    padding: 20px;
-    padding-left: 10vw;
-    padding-right: 10vw;
     position: sticky;
     top: 0;
-    overflow: hidden;
     z-index: 10;
 }
 
-nav .logo {
+nav input {
+    display: none;
+    z-index: -100;
+}
+
+nav .contenedor-nav {
+    width: 80vw;
+    max-width: 1500px;
+    margin: auto;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    overflow: hidden;
+    display: flex;
+    height: 100%;
+}
+
+nav .logo-cont {
+    display: flex;
+    align-items: center;
     float: left;
+    width: 25%;
 }
 
-nav .logo img {
-    width: 50px;
+nav .logo {
+    width: 40px;
 }
 
-nav div.menu {
+nav .resto-nav {
+    width: 80%;
+}
+
+.menu {
+    float: right;
+    line-height: 100px;
+}
+
+.menu a {
+    color: #ababab;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0 10px;
+    transition: 0.4s;
+    text-align: center;
+    font-size: 13px;
+}
+
+.mostrar-menu-btn,
+.esconder-menu-btn {
+    transition: 0.4s;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+    color: #fff;
+}
+
+i.fas.fa-times {
+    margin-right: 5vw;
+}
+
+.mostrar-menu-btn {
     float: right;
 }
 
-nav div.menu a {
-    font-size: 13px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #5CDC95;
-    margin-left: 20px;
-    line-height: 60px;
+
+.mostrar-menu-btn i {
+    line-height: 100px;
 }
 
-nav div.menu a:hover {
-    text-decoration: underline;
+.menu a:hover,
+.mostrar-menu-btn:hover,
+.esconder-menu-btn:hover {
+    color: #5CDC95;
+}
+
+#chk {
+    position: absolute;
+    z-index: -100;
+    background-color: #043264;
+    border-radius: 50%;
 }
 
 header {
@@ -54,7 +105,6 @@ header {
     max-width: 1500px;
     height: 800px;
     margin: auto;
-    margin-bottom: 5vw;
     padding: 5vw;
     padding-top: 200px;
     padding-right: 0;
@@ -80,6 +130,11 @@ header .titulo:hover {
 header .textos .logo-header {
     width: 30px;
     float: right;
+    transition: margin-top 0.5s;
+}
+
+header .textos .logo-header:hover {
+    margin-top: 100px;
 }
 
 
@@ -119,11 +174,28 @@ main h2.subtitulo {
     color: #5CDC95;
     text-transform: uppercase;
     font-weight: 800;
+    margin-bottom: 5px;
+}
+
+main hr.subtitulo-hr {
+    width: 50%;
+    border: solid 4px #5CDC95;
+    background-color: #5CDC95;
+    border-radius: 10px;
+    transition: width 0.5s;
     margin-bottom: 30px;
 }
 
-main h2.subtitulo:hover {
-    text-decoration: underline;
+main hr.subtitulo-hr:hover {
+    width: 70%;
+}
+
+#sobre-mi hr.subtitulo-hr {
+    width: 130px;
+}
+
+#sobre-mi hr.subtitulo-hr:hover {
+    width: 50%;
 }
 
 .parrafo {
@@ -136,6 +208,14 @@ section#proyectos {
     max-width: 1500px;
     margin: auto;
     overflow: hidden;
+}
+
+#proyectos hr.subtitulo-hr {
+    width: 210px;
+}
+
+#proyectos hr.subtitulo-hr:hover {
+    width: 50%;
 }
 
 div.proyectos {
@@ -207,6 +287,14 @@ section#habilidades {
     overflow: hidden;
 }
 
+#habilidades hr.subtitulo-hr {
+    width: 165px;
+}
+
+#habilidades hr.subtitulo-hr:hover {
+    width: 50%;
+}
+
 div.habilidades {
     display: flex;
     flex-wrap: wrap;
@@ -245,6 +333,14 @@ section#contactame {
     overflow: hidden;
 }
 
+#contactame hr.subtitulo-hr {
+    width: 175px;
+}
+
+#contactame hr.subtitulo-hr:hover {
+    width: 100%;
+}
+
 div.card {
     width: 50%;
     height: 330px;
@@ -254,7 +350,7 @@ div.card {
     border-radius: 10px;
 }
 
-div.card iframe  {
+div.card iframe {
     border-radius: 10px;
 }
 
@@ -314,11 +410,8 @@ footer {
 
 }
 
-.footer-left h3 {
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 16px;
-    color: #fff;
+.footer-left img {
+    width: 80%;
 }
 
 .footer-left span {
@@ -358,4 +451,70 @@ footer {
 .footer-right a {
     margin-left: 20px;
     text-decoration: none;
+}
+
+@media screen and (max-width: 900px) {
+    /* Responsive Nav */
+
+    .mostrar-menu-btn,
+    .esconder-menu-btn {
+        display: block;
+        float: right;
+    }
+
+    nav {
+        height: 100px;
+        z-index: 1000;
+    }
+
+    nav .contenedor-nav {
+        padding: 0 2vw;
+    }
+
+    nav .logo-cont {
+        margin-right: 70px;
+    }
+
+    .menu {
+        position: fixed;
+        width: 35%;
+        height: auto;
+        background: #5CDC95;
+        right: -100%;
+        top: 0;
+        text-align: left;
+        padding: 80px 10vw;
+        line-height: normal;
+        transition: 0.5s;
+        font-size: 25px;
+        z-index: 100000;
+        border-bottom-left-radius: 10px;
+    }
+
+    .menu a {
+        display: block;
+        padding: 20px;
+        padding-right: 0;
+        color: #fff;
+        text-align: right;
+    }
+
+    .menu a:hover,
+    .mostrar-menu-btn:hover,
+    .esconder-menu-btn:hover {
+        color: #28293D;
+    }
+
+
+    .esconder-menu-btn {
+        position: absolute;
+        line-height: 100px;
+        top: 0;
+        right: 7vw;
+    }
+
+    #chk:checked~.menu {
+        right: 0;
+    }
+
 }
